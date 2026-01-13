@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>jhnyx.com</title>
+    <meta name="description" content="jhnyx.com is live." />
+    <meta name="robots" content="index,follow" />
+    <style>
+      :root {
+        color-scheme: light dark;
+        --bg: #0b1020;
+        --panel: rgba(255, 255, 255, 0.06);
+        --text: rgba(255, 255, 255, 0.92);
+        --muted: rgba(255, 255, 255, 0.7);
+        --border: rgba(255, 255, 255, 0.12);
+        --accent: #7c5cff;
+      }
+
+      @media (prefers-color-scheme: light) {
+        :root {
+          --bg: #f6f7fb;
+          --panel: rgba(0, 0, 0, 0.03);
+          --text: rgba(0, 0, 0, 0.88);
+          --muted: rgba(0, 0, 0, 0.62);
+          --border: rgba(0, 0, 0, 0.12);
+          --accent: #5b48ff;
+        }
+      }
+
+      * { box-sizing: border-box; }
+      html, body { height: 100%; }
+      body {
+        margin: 0;
+        font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji",
+          "Segoe UI Emoji";
+        background:
+          radial-gradient(900px 600px at 20% 15%, rgba(124, 92, 255, 0.22), transparent 60%),
+          radial-gradient(900px 600px at 85% 80%, rgba(0, 208, 255, 0.16), transparent 60%),
+          var(--bg);
+        color: var(--text);
+        display: grid;
+        place-items: center;
+        padding: 24px;
+      }
+
+      main {
+        width: min(880px, 100%);
+        border: 1px solid var(--border);
+        background: var(--panel);
+        border-radius: 18px;
+        padding: clamp(18px, 4vw, 34px);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 18px 70px rgba(0, 0, 0, 0.22);
+      }
+
+      header {
+        display: flex;
+        gap: 14px;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+      }
+
+      .brand {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        min-width: 220px;
+      }
+
+      .dot {
+        width: 14px;
+        height: 14px;
+        border-radius: 999px;
+        background: linear-gradient(135deg, var(--accent), rgba(0, 208, 255, 0.85));
+        box-shadow: 0 0 0 6px rgba(124, 92, 255, 0.12);
+      }
+
+      h1 {
+        margin: 0;
+        font-size: clamp(22px, 3.3vw, 34px);
+        letter-spacing: -0.02em;
+      }
+
+      .status {
+        font-size: 14px;
+        color: var(--muted);
+        display: flex;
+        gap: 10px;
+        align-items: center;
+      }
+
+      .pill {
+        border: 1px solid var(--border);
+        border-radius: 999px;
+        padding: 6px 10px;
+        display: inline-flex;
+        gap: 8px;
+        align-items: center;
+        background: rgba(0, 0, 0, 0.06);
+      }
+
+      @media (prefers-color-scheme: light) {
+        .pill { background: rgba(255, 255, 255, 0.55); }
+      }
+
+      .pill i {
+        width: 9px;
+        height: 9px;
+        border-radius: 999px;
+        background: #39d98a;
+        box-shadow: 0 0 0 5px rgba(57, 217, 138, 0.12);
+      }
+
+      p {
+        margin: 14px 0 0;
+        color: var(--muted);
+        line-height: 1.6;
+        font-size: 15px;
+      }
+
+      .grid {
+        margin-top: 22px;
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        gap: 14px;
+      }
+
+      .card {
+        grid-column: span 12;
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        padding: 14px 14px 12px;
+        background: rgba(0, 0, 0, 0.05);
+      }
+
+      @media (prefers-color-scheme: light) {
+        .card { background: rgba(255, 255, 255, 0.55); }
+      }
+
+      @media (min-width: 760px) {
+        .card { grid-column: span 6; }
+      }
+
+      .card h2 {
+        margin: 0;
+        font-size: 14px;
+        letter-spacing: 0.02em;
+        text-transform: uppercase;
+        color: var(--text);
+        opacity: 0.9;
+      }
+
+      .mono {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+        font-size: 13px;
+        word-break: break-word;
+      }
+
+      footer {
+        margin-top: 22px;
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        flex-wrap: wrap;
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
+      a:hover { color: var(--text); }
+    </style>
+  </head>
+
+  <body>
+    <main>
+      <header>
+        <div class="brand">
+          <div class="dot" aria-hidden="true"></div>
+          <h1>jhnyx.com</h1>
+        </div>
+
+        <div class="status" aria-label="Site status">
+          <span class="pill"><i aria-hidden="true"></i> Live</span>
+          <span class="mono" id="now">Loading time…</span>
+        </div>
+      </header>
+
+      <p>
+        If you can read this page at <span class="mono">jhnyx.com</span>, your domain + hosting is working.
+      </p>
+
+      <section class="grid" aria-label="Diagnostics">
+        <div class="card">
+          <h2>URL</h2>
+          <p class="mono" id="url">Loading…</p>
+        </div>
+
+        <div class="card">
+          <h2>User Agent</h2>
+          <p class="mono" id="ua">Loading…</p>
+        </div>
+      </section>
+
+      <footer>
+        <span>Replace this file when you’re ready to build the real site.</span>
+        <span class="mono">index.html</span>
+      </footer>
+    </main>
+
+    <script>
+      (function () {
+        var nowEl = document.getElementById("now");
+        var urlEl = document.getElementById("url");
+        var uaEl = document.getElementById("ua");
+
+        var now = new Date();
+        nowEl.textContent = now.toLocaleString();
+        urlEl.textContent = window.location.href;
+        uaEl.textContent = navigator.userAgent;
+      })();
+    </script>
+  </body>
+</html>
+
